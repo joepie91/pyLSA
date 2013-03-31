@@ -104,19 +104,23 @@ if os.getuid() == 0:
 	if os.path.isdir("/home/pylsa/.pylsa"):
 		# Already installed, run as pylsa user
 		switch_user()
+		os.chdir("/home/pylsa/.pylsa")
 		exit(subprocess.call(["python", "/home/pylsa/.pylsa/daemon.py"]))
 	else:
 		# Not installed yet, install as pylsa user then run
 		add_user("pylsa")
 		install(True)
 		switch_user()
+		os.chdir("/home/pylsa/.pylsa")
 		exit(subprocess.call(["python", "/home/pylsa/.pylsa/daemon.py"]))
 else:
 	# Script is run as unprivileged user
 	if os.path.isdir(os.path.expanduser("~/.pylsa")):
 		# Already installed
+		os.chdir(os.path.expanduser("~/.pylsa"))
 		exit(subprocess.call(["python", os.path.expanduser("~/.pylsa/daemon.py")]))
 	else:
 		# Not installed yet
 		install(False)
+		os.chdir(os.path.expanduser("~/.pylsa"))
 		exit(subprocess.call(["python", os.path.expanduser("~/.pylsa/daemon.py")]))
