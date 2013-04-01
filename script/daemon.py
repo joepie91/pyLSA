@@ -49,7 +49,8 @@ def generate_stats(get_processes):
 			"out": swap.sout
 		},
 		"disk": disks,
-		"cpu": psutil.cpu_percent(percpu=True)
+		"cpu": psutil.cpu_percent(percpu=True),
+		"load": list(os.getloadavg())
 	}
 	
 	if get_processes:
