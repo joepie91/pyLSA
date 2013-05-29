@@ -86,7 +86,7 @@ def add_user(uname):
 	grp.seek(0, 2)
 	
 	setuplib.create_directory("/home/%s" % uname, True, new_uid, new_gid, "u+rwx g+rx")
-	passwd.write("%s::%d:%d::/home/cvm:/bin/false\n" % (uname, new_uid, new_gid))
+	passwd.write("%s::%d:%d::/home/pylsa:/bin/false\n" % (uname, new_uid, new_gid))
 	grp.write("%s::%d:\n" % (uname, new_gid))
 
 	# We're done with /etc/passwd and /etc/group
