@@ -33,8 +33,10 @@ def generate_stats(get_processes):
 				"free": usage.free
 			}
 	
+	uptime = (datetime.now() - datetime.fromtimestamp(psutil.BOOT_TIME))
+	
 	return_data = {
-		"uptime": (datetime.now() - datetime.fromtimestamp(psutil.BOOT_TIME)).total_seconds(),
+		"uptime": (uptime.microseconds + (uptime.seconds + uptime.days * 24 * 3600) * 10**6) / 10**6,
 		"memory": {
 			"total": mem.total,
 			"available": mem.available,
