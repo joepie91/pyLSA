@@ -15,7 +15,7 @@ bind_ip = ""
 port = 8081
 
 def generate_stats(get_processes):
-	listed_filesystems = ["ext2", "ext3", "ext4", "reiserfs", "removable", "fixed", "simfs"]
+	listed_filesystems = ["ext2", "ext3", "ext4", "reiserfs", "removable", "fixed", "simfs", "xfs"]
 	
 	mem = psutil.virtual_memory()
 	swap = psutil.swap_memory()
